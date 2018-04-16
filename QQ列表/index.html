@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li,
+		h2 {
+			margin: 0;
+			padding: 0;
+		}
+		
+		li {
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="qq.css" />
+</head>
+
+<body onselectstart="return false;">
+	<div class="wrap">
+		<div class="list">
+			<h2><span></span>我的好友</h2>
+			<ul>
+				<li>小佳Love</li>
+				<li>从来就是这么正经</li>
+				<li>leo是个胖子</li>
+				<li>momo不是陌陌</li>
+			</ul>
+			<h2><span></span>企业好友</h2>
+			<ul>
+				<li>习近平</li>
+				<li>普京</li>
+				<li>奥巴马</li>
+			</ul>
+			<h2><span></span>黑名单</h2>
+			<ul>
+				<li>安倍</li>
+				<li>杜特尔特</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		var captions = document.querySelectorAll('.list h2');
+		var lists = document.querySelectorAll('.list ul');
+		
+		var len = captions.length, prev = 0, prevItem = 0;
+		
+		for (var i=0; i<len; i++) {
+			captions[i].index = i
+			
+			captions[i].onclick = function (){
+				// 清除上一个
+				if (!this.classList.contains('active')) {
+					captions[prev].classList.remove('active')
+					lists[prev].classList.remove('active')
+				}
+				
+				
+				// 给当前添加
+				var ret = this.classList.toggle('active')
+				lists[this.index].classList.toggle('active', ret)
+				
+				// 让当前变成上一个
+				prev = this.index
+			}
+			
+			// 找到 每一组的 li
+			// var listItem = lists[i].getElementsByTagName('li')
+		}
+		
+		var listItem = document.querySelectorAll('.list li');
+		
+		for (var i=0; i<listItem.length; i++) {
+			listItem[i].index = i
+			listItem[i].onclick = function (){
+				if (!this.classList.contains('selected')) {
+					listItem[prevItem].classList.remove('selected')
+				}
+				this.classList.toggle('selected')
+				prevItem = this.index
+			}
+		}
+	</script>
+</body>
+
+</html>
