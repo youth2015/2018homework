@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+input{ vertical-align:middle;}
+div{ display:inline-block;border:1px solid #000;width:300px;height:300px; vertical-align:middle; font-size:50px;}
+</style>
+<script>
+	window.onload=function(){
+		var oBtn=document.getElementsByTagName("input");
+		var oBox=document.querySelector("#div");
+		var arrImg=["1","2","3","4","5","6"];
+		var num=0;
+		
+		oBtn[0].onclick=function(){
+			num--;
+			if(num<0){
+				num=arrImg.length-1;
+			}
+			oBox.innerHTML=arrImg[num];
+		}
+		
+		oBtn[1].onclick=function(){
+			num++;
+			if(num>=arrImg.length){
+				num=0;
+			}
+			oBox.innerHTML=arrImg[num];
+		}
+	}
+</script>
+</head>
+<body>
+<input type="button" value="上一张" />
+<div id="div">0</div>
+<input type="button" value="下一张" />
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    body, html {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+    }
+    .container div {
+      width: 10%;
+      height: 10%;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      background-image: url(./img/timg.jpg);
+      background-size: 1000% 1000%;
+      /*background: #ccc;*/
+      opacity: 0.5;
+      position: absolute;
+      transition: 200ms;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+  </div>
+  <script>
+    var container = document.querySelector('.container');
+    
+    var str = '';
+    
+    for(var i=0; i<100; i++){
+      str += `<div style="left:${(i%10) * 10}%;top:${~~(i/10) * 10}%;background-position:-${i%10 * 100}% -${~~(i/10) * 100}%;"></div>`;
+    }
+    
+    container.innerHTML = str;
+    
+    var imgItems = document.querySelectorAll('.container div');
+    
+    for(var i=0, len=imgItems.length; i<len; i++){
+      // 鼠标移入
+      imgItems[i].onmouseover = function (){
+        this.style.opacity = 1;
+        this.style.transform = 'scale(1.3)';
+        this.style.zIndex = 10;
+      };
+      // 鼠标移出
+      imgItems[i].onmouseout = function (){
+        // this.style.opacity = '';
+        this.style.transform = '';
+        this.style.zIndex = '';
+      };
+    }
+  </script>
+</body>
+</html>

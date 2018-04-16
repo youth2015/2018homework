@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#title{width:200px;height:30px;margin:0;background:#CF0; font:16px/30px "宋体"; text-align:center;}
+#list{margin:0;padding:0;width:200px;background:#9F3; list-style:none; display:none;}
+#list li{height:26px; font:14px/26px "宋体"; text-indent:2em; border-bottom:1px solid #fff; cursor: pointer;}
+#img{ position:absolute;width:300px; left:350px;top:30px;}
+</style>
+<script>
+	window.onload=function(){
+		var oTitle=document.querySelector("#title");
+		var oList=document.querySelector("#list");
+		var oImg=document.querySelector("#img");
+		var aLi=oList.getElementsByTagName("li");
+		
+		var arrImg=["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg"];
+		
+		for(var i=0;i<aLi.length;i++){
+			
+			aLi[i].index=i;
+			aLi[i].onclick=function(){				
+				oImg.src=arrImg[this.index];
+				oTitle.innerHTML=this.innerHTML;
+				oList.style.display="none";
+			}	
+		}		
+		
+		oTitle.onclick=function(){
+			
+			if(oList.style.display=="block"){
+				oList.style.display="none";
+			}else{
+				oList.style.display="block";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h2 id="title">图片1</h2>
+<ul id="list">
+	<li>图片1</li>
+    <li>图片2</li>
+    <li>图片3</li>
+    <li>图片4</li>
+    <li>图片5</li>
+    <li>图片6</li>
+</ul>
+<img src="img/1.jpg" id="img" />
+</body>
+</html>

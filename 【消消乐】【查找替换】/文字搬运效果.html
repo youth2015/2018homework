@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    *{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    .conTent{
+        width: 800px;
+        height: 600px;
+        margin: 100px auto;
+        background: royalblue;
+        border-radius: 2px;
+        padding:20px;
+    }
+    .boxLeft{
+        padding: 10px;
+        width:328px;
+        height:580px;
+        background: gainsboro;
+        float: left;
+        border-radius: 12px;
+        resize:none;
+        font-size: 16px;
+    }
+    .boxRight{
+        padding: 10px;
+        width:330px;
+        height:580px;
+        background: gainsboro;
+        float: right;
+        border-radius: 12px;
+    }
+    .middle{
+        width: 100px;
+        height: 580px;
+        float: left;
+    }
+    .middle strong{
+        width:80px;
+        height: 80px;
+        background:gold;
+        color: #000;
+        cursor: pointer;
+        line-height: 80px;
+        border-radius: 6px;
+        display: inline-block;
+        margin:250px  10px 10px;
+    }
+    .middle span{
+        display: inline-block;
+        width: 80px;
+        height: 20px;
+        line-height: 20px;
+        text-align:center;
+        color: #ffffff;
+        margin:0 10px;
+    }
+</style>
+<body>
+    <div class="conTent">
+        <textarea value="" class="boxLeft"></textarea>
+        <div class="middle">
+            <strong>把文字右移</strong>
+            <span></span>
+        </div>
+        <div class="boxRight">
+
+        </div>
+    </div>
+    <script>
+        const oBoxLeft=document.querySelector(".boxLeft");
+        const oBoxRight=document.querySelector(".boxRight");
+        const oMiddle=document.querySelector(".middle");
+        const oSbtn=oMiddle.querySelector("strong");
+        const oSpan=oMiddle.querySelector("span");
+        let timer=null;
+        let num1;
+        oSbtn.onclick=function(){
+            oBoxRight.innerHTML = '';
+            let oVule=oBoxLeft.value;
+            let len=oVule.length;
+            num1 = len;
+            //let oRHtml=oBoxRight.innerHTML;
+            timer=setInterval(function(){
+                if(num1<=0){
+                    clearInterval(timer);
+                };
+                oBoxRight.innerHTML+=oBoxLeft.value.slice(0,1);
+                oBoxLeft.value=oBoxLeft.value.substring(1);
+                oSpan.innerHTML=oVule.length+"/"+len;
+                num1--;
+            },300)
+
+        }
+    </script>
+</body>
+</html>

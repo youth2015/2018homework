@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片</title>
+<style>
+body,ul,ol{margin:0;padding:0;}
+li{ list-style:none;}
+img{ vertical-align:top;}
+#wrap{width:500px;height:300px;border:10px solid #000; position:relative; margin:40px auto; overflow:hidden;}
+#pics{ position:absolute;left:0;top:0;width:300px; transition:0.5s;}
+#pics img{width:500px;height:300px;}
+#btns{ position:absolute;width:150px;left:175px;bottom:30px;}
+#btns li{width:20px;height:20px;background:#fff; float:left; margin:0 5px; display:inline; border-radius:50%;}
+#btns .active{ background:#f60;}
+</style>
+
+<script>
+
+</script>
+</head>
+<body>
+<div id="wrap">
+	<ul id="pics">
+    	<li>
+        	<a href="#">
+            	<img src="img/1.jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#">
+            	<img src="img/2.jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#">
+            	<img src="img/3.jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#">
+            	<img src="img/4.jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#">
+            	<img src="img/5.jpg" />
+            </a>
+        </li>
+    </ul>
+    <ol id="btns">
+    	<li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+</body>
+</html>

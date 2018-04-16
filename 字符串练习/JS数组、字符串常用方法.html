@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //JS数组、字符串常用方法
+        //push()向数组结尾添加一个或多个，并且返回新的数组，该方法会改变原有的数组
+        let arr=[1,3,4,6];
+        let b=arr.push(30);
+        console.log(b);
+        console.log(arr);
+
+        //pop();
+        let arr1=[3,4,5,6,1];
+
+        console.log(arr1.pop());
+        console.log(arr1);
+
+        //unshift(); 在数组的前面添加新的元素，并且返回新的数组。该方法会改变原有的数组。
+
+        let arr3=["a",3,"js",4];
+
+        let ret1=arr3.unshift("e");
+
+        console.log(ret1);
+
+        console.log(arr3);
+
+        let arr4=[4,5,2,6,"e"];
+
+        console.log(arr4.shift());
+
+        console.log(arr4);
+
+        let item=[1,3,54,5,62,33];
+        let items;
+
+        while(items=item.shift()){
+            console.log(items);
+        }
+        console.log(item);
+
+        let num=[1,3,2,45,4];
+
+        console.log(num.indexOf(6));//1
+
+        let str=[12,5,4,87,446,46,7];
+
+        console.log(str.toString());
+
+        let ret2=str.toString()
+
+        console.log(ret2);
+
+        console.log(ret2.slice(1,-2));
+
+        let str2=[23,43,56,69,90,30];
+
+        console.log(str2.pop());
+
+        console.log(str2);
+
+        let str3=["a","b","c"];
+
+        console.log(str3.reverse());
+
+        let str4=[133,344,23,16,77];
+
+       sort(function(){})
+
+    </script>
+</body>
+</html>

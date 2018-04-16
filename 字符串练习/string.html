@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <!--//对三个数值进行比较-->
+        <script>
+            let str="0123456789";
+            //首先第一个比较参数;从0开始计数;包括自己本身;
+            //如果开始值为负数，则表示从最后一个值开始计算，从1开始。
+            //如果开始值为正数，结尾值为负数，则返回的是一个空值
+            //如果开始值和结束值都为负数，则返回的是一个空值
+            //如果开始和结束值都为正数，则表示从开始值计算出结束值的长度，包括开始值的本身开始
+            //对字符串substr()的操作
+            //如果substr()为空，则返回所有的字符集合。
+            console.log(str.substr(7)); //789
+            console.log(str.substr(-1,7));//9
+            console.log(str.substr(1,-7));//空
+            console.log(str.substr(1,-5));//空
+            console.log(str.substr(1,-2));//空
+            console.log(str.substr(2,-4));//空
+            console.log(str.substr(4,-3));//空
+            console.log(str.substr(-1,8));//9
+            console.log(str.substr(-1,-2));//空
+            console.log(str.substr(2,4));//2345
+            console.log(str.substr(2,7));//2345678
+            var str2="acfsdfasdfsa";
+            console.log(str2.substr(2,7));//fsdfasd
+            console.log(str2.substr());
+//----------------------------------------------------------------------
+            //对字符串substring()的操作
+            //如果省略substring()里最后一个值 则会提取字符到字符串的末尾。
+            //如果开始值大于结束值，则可以将两个值 进行互调，那么它获取的就是其中一个值的数长度。
+            //如果开始值小于它的结束值，则表示的是获取它结束值的长度，从1开始计算。
+            //如果第一个值为正数 则是从0开始的
+            //如果值为空“”,则表达全部取值
+            //如果开始值和结束值相等，则返回0
+            //如果开始值和结束值都为负数，则返回的空值
+            //如果开始值和结束值都为正数，则表示在两个之间截取数值,最后一个值减去开始值
+            console.log(str.substring(-1,8));//01234567
+            console.log(str.substring(-7,-2));//空值
+            console.log(str.substring(2,4));//23
+            var str1="acfsdfasdfsa";
+            console.log(str1.substring(2,7))//fsdfa
+            console.log(str1.substring(2,7));//23456
+            console.log(str.substring(7)); //789
+
+//----------------------------------------------------------------------
+            //如果是正数，则表示从0开始截取字符串;
+            //如果两个数为负值，则表示为空值
+
+            console.log(str.slice(7));//789
+            console.log(str.slice(1,2));//1
+            console.log(str.slice(1,5));//1234
+            console.log(str.slice(4,5));//4
+            console.log(str.slice(3,5));//34
+            console.log(str.slice(4,-2));//
+            str3="fsfslfjsldfjlsfjl";
+            console.log(str3.slice(-1,-4));//空值
+            console.log(str3.slice(1,-4));//sfslfjsldfjl
+            console.log(str3.slice(2,-4));//fslfjsldfjl
+            console.log(str3.slice(-2,-4));//空
+            console.log(str3.slice(2,-6))//fslfjsldf
+            console.log(str3.slice(-2,6))//空值
+            console.log(str3.slice(-5,6))//空值
+            console.log(str3.slice(5,-6));//fjsldf
+        </script>
+</body>
+</html>

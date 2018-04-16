@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度评分</title>
+		<style>
+			body,h1 {
+				margin: 0;
+				padding: 0;
+				-webkit-font-smoothing: antialiased;
+			}
+			.starts{
+				overflow:hidden;
+			}
+			.starts span{
+				display: block;
+				float: left;
+				padding: 3px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="pingfen.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="baidu">
+				<div class="caption">
+					<h1></h1>
+					<span>总体评价</span>
+				</div>
+				<div class="context">
+					<div class="starts">
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+					</div>
+					<div class="info"></div>
+				</div>
+				<div class="tips">
+					小提示：点击星星就能打分
+				</div>
+			</div>
+		</div>
+		<script>
+			/**
+			 * 1.对于这个效果来说，一共有3个事件，分别是鼠标移入、移出、点击
+			 * 2.对于鼠标移入事件：移入第几个星星，就让几个星星变色。
+			 * 			（怎么知道当前移入的是第几个星星，可以通过索引值的方式）
+			 * 		移入第几个星星，同时还有判断当前评价的内容是什么。
+			 * 3.对于鼠标移出的事件，分为两种情况：
+			 * 		1) 就是如果没有点击过，那么就清空所有的星星颜色，以及让提示隐藏
+			 * 		2) 如果说鼠标点击过了，那么就要首先知道点击的是第几个星星。是第几个
+			 * 		就让几个星星变色。
+			 * 4. 对于鼠标点击事件：只需要左一件事，就是把点击的第几个星星的编号保存以下
+			 * 		以便于鼠标移出的时候知道点击了第几个星星。
+			 *
+			 * 5. 根据案例效果，当评分完成之后，鼠标再次移入还是可以重新评分的，这个在
+			 * 		鼠标移入的时候，可以先去清空所有，然后在执行之前的功能。
+			 */
+			const btn = document.querySelectorAll('.starts span');
+			const info = document.querySelector('.info');
+			let num 
+			for(let i=0;i<btn.length;i++){				
+				btn[i].onmousemove = function (){
+					appear(i);		
+				}
+				btn[i].onmouseout = function (){
+					console.log(num);
+					for(let k=0;k<btn.length;k++){
+						btn[k].innerHTML = '☆'
+						btn[k].style.color = '#c6c6c6'						
+					}
+					info.style.display = 'none'
+					if(typeof num !== 'undefined'){
+						appear(num);
+					}
+				}
+				btn[i].onclick = function (){
+					appear(i);
+					num = i;
+				}
+			}		
+			function appear(i){
+				for(let k=0;k<btn.length;k++){
+					btn[k].innerHTML = '☆'
+					btn[k].style.color = '#c6c6c6'						
+				}
+				for(let j=0;j<=i;j++){
+					btn[j].innerHTML = '★'
+					btn[j].style.color = '#e2bde2'
+					if(i>1){
+						btn[j].style.color = '#de4a63'
+					} 												
+				}					
+				switch (i){
+					case 0:
+						info.style.display = 'block';
+						info.innerHTML = '极差'
+						break;
+					case 1:
+						info.style.display = 'block';
+						info.innerHTML = '一般'
+						break;
+					case 2:
+						info.style.display = 'block';
+						info.innerHTML = '不错'
+						break;
+					case 3:
+						info.style.display = 'block';
+						info.innerHTML = '推举'
+						break;
+					case 4:
+						info.style.display = 'block';
+						info.innerHTML = '力推'
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

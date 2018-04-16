@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <script>
+    /**
+     * 1 封装一个函数叫做 reverse
+     * 2 该函数的参数是一个数组
+     * 3 调用这个函数，那么数组将会反转
+     * 4 返回反转后的数组
+     */
+//  
+//  function reverse(arr){
+//			var len=arr.length;
+//			if(len<2) return arr;
+//			
+//			for(var i=0;i<len;i++){
+//				var indexA=i;
+//				var indexB=len-i-1;
+//				
+//				if(indexA<indexB){
+//					var middle=arr[indexA];
+//					arr[indexA]=arr[indexB];
+//					
+//					arr[indexB]=middle;
+//				}
+//				
+//			}
+//			
+//			return arr;
+//  }
+//  
+    var arr = [1, 2, 3];
+    
+    function reverse(arr){
+//  	var len=arr.length;
+//  	if(len<2) return arr;//长度小于2，那么数组不需要反转
+//  	
+//  	for(var i=0;i<len;i++){
+//  		
+//  		var start=i,end=len-i-1;
+//  		
+//  		if(start<end){
+//  			var m=arr[start];
+//  		
+//  			arr[start]=arr[end];
+//  			
+//  			arr[end]=m;
+//  			
+//  			//[arr[start],arr[end]]=[arr[end],arr[start]];
+//  		}
+//  	}
+    	
+    	   var box=[];
+    	   var len=arr.length;
+    	   for(var i=0;i<len;i++){
+    	   	box[i]=arr[len-i-1]   	   	
+    	   }
+    	   for(var i=0;i<len;i++){
+    	   	arr[i]=box[i];
+    	   }
+
+    	   
+    }
+    
+ 
+    
+    console.log(reverse(arr));  // [3, 2, 1]
+    console.log(arr);  // [3, 2, 1]
+    
+    
+  </script>
+</body>
+</html>

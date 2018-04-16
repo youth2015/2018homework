@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        p,ul{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        li{
+            list-style: none;
+        }
+        div{
+            float:left;
+        }
+        #left,#right{
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #940032;
+            border-radius: 15px;
+            position: relative;
+        }
+        #right{
+            border-color: #4169E1;
+        }
+        #left span,#right span{
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4169E1;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            margin-left: -40px;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+        }
+        #right span{
+            background-color: #940032;
+        }
+        #center{
+            width: 70px;
+            height: 100px;
+            padding: 30px;
+            position: relative;
+        }
+        #center a{
+            width: 70px;
+            height: 20px;
+            background-color: #EF3163;
+            line-height: 20px;
+            text-align: center;
+            display: block;
+            margin-top: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+        #center ul{
+            position: absolute;
+            bottom: 0px;
+        }
+        #center li{
+            width: 10px;
+            height: 10px;
+            background-color: #808080;
+            float: left;
+            margin: 0 3px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="left">
+        <p>拍碎双玉斗，慷慨一何多。满腔都是血泪，无处着悲歌。三百年来王气，满目山河依旧，人事竟如何？百户尚牛酒，四塞已干戈。千金剑，万言策，两蹉跎。醉中呵壁自语，醒后一滂沱。不恨年华去也，只恐少年心事，强半为销磨。愿替众生病，稽首礼维摩。</p>
+        <span></span>
+    </div>
+    <div id="center">
+        <a href="javascript:;" id="toLeft">→</a>
+        <a href="javascript:;" id="toRight">←</a>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="right">
+        <p></p>
+        <span></span>
+    </div>
+</div>
+<script type="text/javascript">
+    const toLeftBtn=document.querySelector("#toLeft");
+    const toRightBtn=document.querySelector("#toRight");
+
+    const oleft=document.querySelector("#left");
+    const oP1=oleft.querySelector("p");
+    const oSpan1=oleft.querySelector("span");
+    const oLi=document.querySelectorAll("li");
+    console.log(oLi)
+    const oright=document.querySelector("#right");
+    const oP2=oright.querySelector("p");
+    const oSpan2=oright.querySelector("span");
+
+    let timer=null;
+    let num=0;
+    let len=oP1.innerHTML.length;
+    toLeftBtn.onclick=function(){
+        fn(oP1,oP2,oSpan1);
+    };
+    toRightBtn.onclick=function(){
+        fn(oP2,oP1,oSpan2);
+    };
+    function fn(obj1,obj2,sp1,sp2){
+        timer=setInterval(function(){
+            if(obj1.innerHTML.length<=0){
+                clearInterval(timer)
+            }
+            obj2.innerHTML+=obj1.innerHTML.slice(0,1);
+            obj1.innerHTML=obj1.innerHTML.substring(1);
+            sp1.innerHTML=obj1.innerHTML.length+"/"+len;
+
+            oLi[num].style.backgroundColor="";
+            num++;
+            num%=oLi.length;
+            oLi[num].style.backgroundColor="red";
+        },30)
+    };
+
+</script>
+</body>
+</html>

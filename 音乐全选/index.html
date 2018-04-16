@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			#list li.even {
+				background: rgba(225,86,113,.3);
+			}
+			#list li.hover {
+				background: rgba(225,86,113,.5);
+				color: #fff;
+			}
+			#list li.checked {
+				background: rgba(225,86,113,.8) !important;
+				color: #fff;
+			}
+			#list li.checked div::after {
+				content: "✔️";
+			}
+			
+			.selectAll.checked .select-status::after {
+				content: "✔️";
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="baidu">
+				<ul id="list">
+					<li	>
+						<div></div>
+						<span>泡沫</span>
+						<span>邓紫棋</span>
+					</li>
+					<li>
+						<div></div>
+						<span>说爱你</span>
+						<span>蔡依林</span>
+					</li>
+					<li>
+						<div></div>
+						<span>稻香</span>
+						<span>周杰伦</span>
+					</li>
+					<li>
+						<div></div>
+						<span>我的梦</span>
+						<span>张靓颖</span>
+					</li>
+					<li>
+						<div></div>
+						<span>怎么说我不爱你</span>
+						<span>萧敬腾</span>
+					</li>
+					<li>
+						<div>️</div>
+						<span>无处安放</span>
+						<span>白若溪</span>
+					</li>
+				</ul>
+				<div class="select">
+					<span class="selectAll">
+						<span class="select-status"></span>
+						<span class="text">全选</span>
+					</span>
+					<div class="others">
+						<span><em></em>收藏</span>
+						<span><em></em>添加</span>
+						<span><em></em>删除</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ✔️ -->
+		<script>
+		  var musicList = document.querySelectorAll('#list li');
+			var selectAll = document.querySelector('.selectAll');
+			
+			var len = musicList.length, selectNum = 0
+			
+			// console.log(selectAll.classList.toggle('checked', true));
+			
+			for (var i=0; i<len; i++) {
+				if (!(i%2)) {
+					musicList[i].classList.add('even')
+				}
+				musicList[i].onmouseover = function (){
+					this.classList.add('hover')
+				}
+				
+				musicList[i].onmouseout = function (){
+					this.classList.remove('hover')
+				}
+				
+				musicList[i].onclick = function (){
+					var ret = this.classList.toggle('checked')
+					
+					selectNum = ret ? ++selectNum : --selectNum
+					
+					selectAll.classList.toggle('checked', selectNum === len)
+				}
+			}
+			
+			selectAll.onclick = function (){
+				var ret = selectAll.classList.toggle('checked')
+				selectNum = ret ? len : 0
+				for (var i=0; i<len; i++) {
+					musicList[i].classList.toggle('checked', ret)
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+
+</html>

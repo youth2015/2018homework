@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+			list-style:none;
+		}
+		.clearfix{
+				*zoom:1;
+			}
+		.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+		#iphoneBox{
+			width: 750px;
+			height: 526px;
+			background: url(img/bg.jpg) no-repeat;
+			padding-top: 24px;
+			margin: 0 auto;
+			
+		}	
+		.wrapBox{
+			width: 680px;
+			height: 452px;
+			margin:0 auto;
+			background: #fff;
+			border-radius: 10px;
+			padding-top: 48px;
+			position: relative;
+		}
+		
+		.footerBox{
+			width: 560px;
+			height: 410px;
+			background: #000;
+			margin:0 auto;	
+			position: relative;		
+		}
+		#controls {
+			width:260px;
+			height: 36px;
+			padding-top:14px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		#container {
+			width:548px;
+			height:310px;
+			/*position: relative;*/
+		}
+		#prev, #next {
+			position: absolute;
+			background: black;
+			filter:alpha(opacity:40);
+			opacity: 0.3;
+			font-size: 20px;
+			color: white;
+			width: 14px;
+			height: 27px;			
+			line-height: 40px;
+			text-align: center;
+			top:216px;
+			pointer: cursor;
+			text-decoration: none;
+		}
+		#prev:hover, #next:hover {
+			filter:alpha(opacity:80);
+			opacity: 0.8;
+		}
+		#order, #info {
+			position: absolute;
+			width:100%;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 20px;
+			color: white;
+			left:0px;
+		}
+		#prev {
+			background: url(img/prev.png) no-repeat;
+			left:16px;
+		}
+		#next {
+			background: url(img/next.png) no-repeat;
+			right:16px;
+		}
+		#picture {
+			width:550px;
+			height:310px;
+			margin:44px 5px 0;			
+		}
+		#order {
+			top:94px;
+		}
+		#info {
+			bottom:0;
+		}
+		#single,#round{
+			width: 130px;
+			height: 36px;
+			float: left;
+			text-align: center;
+			line-height: 36px;	
+			outline: none;
+			cursor: pointer;	
+			border:1px solid #fff;	
+		}
+		#round{
+			background: #000;
+			color: #fff;
+		}	
+		#single{
+			background: #000;
+			color: #fff;
+		}
+		#controls .active{
+			background: #fff;
+			color: #000;
+			border:1px solid #fff;
+		}
+		
+
+		.windowBox,.windowBoxend{
+			width:400px;
+			height:150px;
+			background:rgba(0,0,0,.5);
+			position: absolute;
+			color: #fff;
+			left:21%;
+			top: 40%;
+			display: none;
+		}
+		
+
+		.windowBox p,.windowBoxend p{
+			text-align: center;
+			line-height:40px;
+			
+		}
+		.qued,.qued1{
+			border: 1px solid #fff;
+			border-radius: 6px;
+			width: 100px;
+			height: 35px;
+			outline:none;
+			line-height: 35px;
+			font-size: 14px;
+			margin:0 auto;
+			display: block;
+			font-size: 16px;
+			color: #fff;
+			background: no-repeat;
+			cursor: pointer;
+		}
+		.close,.close1{
+			width: 11px;
+			height: 11px;
+			background: url(img/close.png) no-repeat;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+	<div id="iphoneBox">
+		<div class="wrapBox">
+			<div class="footerBox">
+				<div id="controls">
+					<input id="round" value="循环播放" type="button" class="active">
+					
+					<input id="single" value="顺序播放" type="button" >
+				</div>
+				<div id="container clearfix">
+			        <a href="javascript:" id="prev"></a>
+			        <a href="javascript:" id="next"></a>
+			        <div id="order"></div>
+			        <div id="info"></div>
+			        <img src="img/img01.jpg" id="picture">
+				</div>
+			</div>
+			
+			<div class="windowBox">
+				<p>javascript提醒</p>
+				<p>已经第一张了</p>
+				<button class="qued">确定</button>
+				
+				<em class="close"></em>
+			</div>
+			
+			<div class="windowBoxend">
+				<p>javascript提醒</p>
+				<p>已经最后一张了</p>
+				<button class="qued1">确定</button>
+				<em class="close1"></em>
+			</div>
+			
+		</div>
+	</div>	
+	
+	
+	<script type="text/javascript">
+		window.onload=function(){
+			var oRound=document.querySelector("#round");
+			var oSingle=document.querySelector("#single");
+			
+			var oContainer=document.querySelector("#container");
+			
+			var oPrev=document.querySelector("#prev");
+			var oNext=document.querySelector("#next");
+			
+			var oRde=document.querySelector("#order");
+			var oInfo=document.querySelector("#info");
+			
+			var oImg=document.querySelector("#picture");
+			
+			var oWindow=document.querySelector(".windowBox");
+			var oClose=document.querySelector(".close");
+			var oQd=document.querySelector(".qued");
+			
+			var oWindow1=document.querySelector(".windowBoxend");
+
+			var oClose1=document.querySelector(".close1");
+			var oQd1=document.querySelector(".qued1");
+			
+			var arrImg=["img/img01.jpg","img/img02.jpg","img/img03.jpg","img/img04.jpg"];
+			var arrInfo=["图片文字描述1","图片文字描述2","图片文字描述3","图片文字描述4"];
+			
+			var num=0;
+			var oNoff=true;
+			oClose.onclick=function(){
+				oWindow.style.display="none";
+			}
+			
+			oQd.onclick=function(){
+				oWindow.style.display="none";
+			}
+			
+			oClose1.onclick=function(){
+				oWindow1.style.display="none";
+			}
+			
+			oQd1.onclick=function(){
+				oWindow1.style.display="none";
+			}
+			
+			oRound.onclick=function(){
+				oSingle.classList.remove("active");
+				oRound.classList.add("active");
+				oNoff=true;
+				
+			}
+			
+			oSingle.onclick=function(){
+				oSingle.classList.add("active");
+				oRound.classList.remove("active");
+				oNoff=false;
+			}
+			
+			
+			tabImg();
+			
+			function tabImg(){
+				oImg.src=arrImg[num];
+				oRde.innerHTML=(num+1)+"/"+arrImg.length;
+				oInfo.innerHTML=arrInfo[num];
+			}
+			
+			
+			oNext.onclick=function(){
+				num++;
+				if(num>arrImg.length-1 && oNoff){
+					num=0;
+				}else if(num>arrImg.length-1 && !oNoff){
+					num=arrImg.length-1
+					
+					oWindow1.style.display="block";
+				}
+				tabImg();
+			}
+			
+			oPrev.onclick=function(){
+				num--;
+				if(num<0 && oNoff){
+					num=arrImg.length-1;
+					
+				}else if(num<0 && !oNoff){
+					num=0;
+					
+					oWindow.style.display="block";
+				}
+				tabImg();
+			}
+			
+			
+		}
+	</script>
+	</body>
+</html>

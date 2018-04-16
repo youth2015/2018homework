@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		span{
+			display: block;
+			font-size: 18px;
+			margin:20px;
+		}
+	</style>
+	<body>
+		<button class="prev">prev</button>
+		<button class="next">next</button>
+		
+		<div class="box">
+			<span class="info">1/4</span>
+			
+			<img src="img/1.jpg"/>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			window.onload=function(){
+				var oPrev=document.querySelector(".prev");
+				var oNext=document.querySelector(".next");
+				var oInfo=document.querySelector(".info");
+				var oImg=document.querySelector("img");
+				
+				var current=0;
+				var arrImg=["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+				//oImg.src=`img/${current}.jpg`;
+				
+				tabImg();
+				
+				function tabImg(){
+					oImg.src=arrImg[current];
+					oInfo.innerHTML=(1+current)+"/"+arrImg.length;
+				}
+	
+				oNext.onclick=function(){
+					current++;
+					
+					if(current>arrImg.length-1){
+						current=0;
+					}
+					tabImg();
+				}
+				
+				oPrev.onclick=function(){
+					current--;
+					
+					if(current<0){
+						current=arrImg.length-1;
+					}
+					tabImg();
+				}
+				
+			}
+		</script>
+	</body>
+</html>

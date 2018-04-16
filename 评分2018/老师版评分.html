@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度评分</title>
+		<style>
+			body,h1 {
+				margin: 0;
+				padding: 0;
+				-webkit-font-smoothing: antialiased;
+			}
+			.starts{
+				overflow:hidden;
+			}
+			.starts span{
+				display: block;
+				float: left;
+				padding: 3px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="pingfen.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="baidu">
+				<div class="caption">
+					<h1></h1>
+					<span>总体评价</span>
+				</div>
+				<div class="context">
+					<div class="starts">
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+						<span>☆</span>
+					</div>
+					<div class="info"></div>
+				</div>
+				<div class="tips">
+					小提示：点击星星就能打分
+				</div>
+			</div>
+		</div>
+		<script>
+		// ★
+		const start=document.querySelectorAll(".starts span");
+		
+		const len=start.length;
+		
+		let SeleceNum=0;
+		
+		for(let i=0; i<len; ++i){
+			start[i].onmouseover=function(){
+				selectStart(i+1);
+			}
+			start[i].onmouseout=function(){
+				selectStart(SeleceNum);
+			}
+			start[i].onclick=function(){
+				SeleceNum = i+1
+			}
+		}
+		
+		function selectStart(n){	
+			for(let j=0;j<len;j++){
+				if(j<n){
+					if(j<=1){						
+						start[j].style.color="pink";
+					}else{
+						for(let i=0;i<=j;i++){		
+							
+							start[i].style.color="yellow";
+						}
+					}
+						start[j].innerHTML="★";
+				}else{
+						
+					start[j].innerHTML="☆";
+					start[j].style.color = ''
+				}
+				
+				
+			}
+		}
+		
+		</script>
+	</body>
+</html>

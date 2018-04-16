@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        list-style: none;
+        padding:0;
+        font-size: 16px;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        background: purple;
+    }
+    .box{
+        width: 800px;
+        height: 800px;
+        margin: 50px auto;
+        position: relative;
+        background:burlywood;
+        padding: 15px;
+        border:5px solid #ffffff;
+        border-radius: 12px;
+    }
+    .happyBox{
+        width: 100px;
+        height: 200px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        margin: 0 10px;
+    }
+    .happyLeft1{
+        width: 80px;
+        height:80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        background: rosybrown;
+        color: #fff;
+        text-align: center;
+        line-height: 34px;
+    }
+    .btn{
+        width: 200px;
+        height:50px;
+        line-height: 40px;
+        background: royalblue;
+        color: #fff;
+        border:none;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        left:320px;
+        border-radius: 12px;
+        outline: none;
+    }
+    .play{
+    	width: 800px;
+        height: 800px;
+        background:beige;
+        border-radius: 12px;
+    }
+</style>
+<body>
+
+    <div class="box">
+        <div class="happyBox">
+            <dl class="happyLeft1">
+                <dt class="win">2分</dt>
+                <dd>得分</dd>
+            </dl>
+            <dl class="happyLeft1">
+                <dt class="lose">0分</dt>
+                <dd>失分</dd>
+            </dl>
+        </div>
+       <div class="play">
+       	
+       </div>
+        <button class="btn">请开始</button>
+    </div>
+
+    <script>
+        const oBox=document.querySelector(".box");
+        const oHappy=document.querySelector(".happyBox");
+        const oWin=document.querySelector(".win");
+        const oLose=document.querySelector(".lose");
+        const oBtn=document.querySelector(".btn");
+        const oImg=document.querySelectorAll("img");
+
+        let str="";
+        let aImg=new Array("img/cat.png","img/hu.png","img/ma.png");
+        let imgdata = new Array();//存储动物对应的数字
+        let vis = new Array(); //标记数组
+        let _clickedimg = new Array();//用来存点击的两张图片
+
+        //console.log(_clickedimg)
+        let num=Math.floor(Math.random()*10);
+
+    </script>
+</body>
+</html>
