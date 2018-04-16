@@ -15,9 +15,7 @@
 		var oList=document.querySelector("#list");
 		var oImg=document.querySelector("#img");
 		var aLi=oList.getElementsByTagName("li");
-		
 		var arrImg=["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg"];
-		
 		for(var i=0;i<aLi.length;i++){
 			
 			aLi[i].index=i;
@@ -26,8 +24,7 @@
 				oTitle.innerHTML=this.innerHTML;
 				oList.style.display="none";
 			}	
-		}		
-		
+		}
 		oTitle.onclick=function(){
 			
 			if(oList.style.display=="block"){
