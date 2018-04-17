@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+   		 <canvas id="myCanvas" width="400" height="300">
+    		您的浏览器不支持canvas!
+    	</canvas>
+		
+		<script type="text/javascript">
+			var canvas=document.getElementById("myCanvas");
+			if (canvas.getContext) {
+    			var ctx=canvas.getContext("2d");
+    		};
+
+
+    		ctx.font = "Bold 20px Arial"; 
+    		ctx.textAlign = "left";
+
+    		ctx.fillStyle = "#008600"; 
+
+    		ctx.fillText("我爱你，在北京!", 10, 50); 
+
+    		ctx.strokeText("我爱你，在北京", 10, 100); 
+
+    		//绘制实心的圆
+    		ctx.beginPath();
+    		ctx.arc(60, 60, 50, 0, Math.PI*2, true);
+    		ctx.fillStyle="#000";
+    		ctx.fill();
+
+    		//绘制空心的圆
+    		ctx.beginPath();
+    		ctx.arc(60, 60, 50, 0, Math.PI*2, true);
+
+    		ctx.lineWidth=1.0;
+    		ctx.strokeStyle="#000";
+    		ctx.stroke();
+
+
+    		
+		</script>
+    </body>
+</html>

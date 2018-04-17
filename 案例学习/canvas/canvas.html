@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<canvas id="myCanvas" width="400" height="300">
+    		您的浏览器不支持canvas!
+    	</canvas>
+
+    	<script type="text/javascript">
+    		var canvas=document.getElementById("myCanvas");
+
+    		if (canvas.getContext) {
+    			var ctx=canvas.getContext("2d");
+    		};
+
+    		//绘制线条
+    		ctx.beginPath();//开始绘制路经
+    		ctx.moveTo(20, 20);//设置起点，终点
+    		ctx.lineTo(200, 20);//绘制一条(200,20)一条直线;
+    		ctx.lineWidth=1.0;//设置线条的宽度
+    		ctx.lineCap="butt";
+    		ctx.lineJoin="miter";
+    		ctx.strokeStyle="#CC0000";//设置线条的颜色
+    		ctx.stroke();//进线线条的着色
+
+    		//绘制矩形
+    		ctx.fillStyle="yellow";
+    		ctx.fillRect(50, 50, 200, 100);
+    		ctx.stroke();
+
+    		//绘制空心矩形
+    		ctx.fillStyle="blue"
+    		ctx.fillRect(40, 40, 100, 50);
+    		ctx.stroke();
+
+    	</script>
+    </body>
+</html>

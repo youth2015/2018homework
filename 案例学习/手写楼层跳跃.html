@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body,html {
+            height: 100%;
+        }
+        ul {
+            list-style: none;
+            height: 100%;
+        }
+        ul li {
+            height: 100%;
+        }
+        ol {
+            list-style: none;
+            position: fixed;
+            top: 80px;
+            left: 50px;
+        }
+        ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>鞋子区域</li>
+        <li>袜子区域</li>
+        <li>裤子区域</li>
+        <li>裙子区域</li>
+        <li>帽子区域</li>
+    </ul>
+    <ol>
+        <li>鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ol>
+
+    <script src="animate1.js"></script>
+    <script type="text/javascript">
+        //需求：点击ol中的li，屏幕滑动到对应的ul中的li的范围。
+        //思路：还是利用window.scrollTo();利用缓动动画原理实现屏幕滑动。
+        //步骤：
+        //0.获取元素
+        //1.指定ul和ol中的li的背景色，对应的li背景色相同
+        //2.老三步。(获取元素并绑定事件)
+        //3.利用缓动动画原理实现屏幕滑动
+        //4.用scroll事件模拟盒子距离最顶端的距离。
+
+        //0.获取元素
+        var oUl=document.getElementsByTagName("ul")[0];
+        var oLi=document.getElementsByTagName("ol")[0];
+        var BigLi=oUl.children;
+        var SmLi=oLi.children;
+        var target=0;
+        var timer=null;
+        var leader=0;
+
+
+        //1.指定ul和ol中的li的背景色，对应的li背景色相同
+        var aColor=["red","yellow","blue","green","pink"];
+        //设置一个数组，里面装颜色，然指定的颜色给数组中的指定元素
+        //利用for循环给两个数组的元素上色
+            //上色
+           for(var i=0;i<aColor.length;i++){
+           		 BigLi[i].style.backgroundColor=aColor[i];
+           		 SmLi[i].style.backgroundColor=aColor[i];
+
+           		 SmLi[i].index=i;
+
+           		 SmLi[i].onclick=function(){
+
+					target=BigLi[this.index].offsetTop;
+
+           		 	clearInterval(timer);
+           		 	timer=setInterval(function(){
+           		 		var step=(target-leader)/10;
+           		 		step=step>0?Math.ceil(step):Math.ceil(step);
+
+           		 		leader=leader+step;
+
+           		 		window.scrollTo(0,leader);
+
+           		 		if(Math.abs(target-leader)<=Math.abs(step)){
+           		 			window.scrollTo(0,target);
+           		 			clearInterval(timer);
+           		 		}
+
+           		 	}, 25)
+
+           		 }
+           }
+
+
+           window.onscroll=function(){
+           		leader=scroll().top;
+           }
+            //属性绑定索引值
+            //2.老三步。(并绑定事件)循环绑定，为每一个li绑定点击事件
+       
+
+        //4.用scroll事件模拟盒子距离最顶端的距离。
+            //每次屏幕滑动，把屏幕卷去的头部赋值给leader,模拟获取显示区域距离顶部的距离
+
+
+</script>
+
+</body>
+</html>
