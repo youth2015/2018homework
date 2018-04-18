@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game_main</title>
+    <link rel="stylesheet" href="css/Game.css"/>
+</head>
+<body>
+    <div id="wrap">
+        <div class="content">
+            <div class="win">
+                <span class="winNum">0分</span>
+                <p>得分</p>
+            </div>
+            <div class="lose">
+                <span class="loseNum">0分</span>
+                <p>失分</p>
+            </div>
+            <a href="javascript:;" class="btn">开始游戏</a>
+        </div>
+    </div>
+
+    <script src="tween.js"></script>
+
+    <!--1.点击btn按钮的，左侧的得分按钮和失分按钮，从右侧向左侧移出边框外-->
+    <!--2.同时点击的按钮，向下移出窗口。-->
+    <!--3.游戏开始我们需要生成随机的图片，用到函数Math.random()随机数，图片往下掉落时，当鼠标碰到图片的时候，会有抖动产生，调用抖动函数-->
+    <!--并且改变不同的图片-->
+    <!--4.图片在掉落的时候，碰到表示加一分，如果，没有接触到，掉落到下的边框，会让整个窗口产生抖动，丢失一分。-->
+    <!--5.给一个限定的值，如果丢失了多少分，游戏结束。左侧的按钮往右移动，下面的触发安钮向上移动。-->
+
+    <script>
+        const oWrap=document.querySelector("#wrap");
+        const oContent=document.querySelector(".content");
+        const oWin=document.querySelector(".win");
+        const owinNum=document.querySelector(".winNum");
+        const oLose=document.querySelector(".lose");
+        const oloseNum=document.querySelector(".loseNum");
+        const oBtn=document.querySelector(".btn");
+        const oImg=document.querySelectorAll("img");
+
+
+
+    </script>
+</body>
+</html>
